@@ -1,0 +1,705 @@
+<div class="mfooter-main">
+    <div class="mfooter-overlay" style="display:block"></div>
+  <div class="mfooter-wrapper page-width">
+    <div class="mfooter-content-wrapper">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'information' %}
+            <div class="mfooter-block-info-main mfooter-{{block.id}} mfooter-block-info-main-desk">
+              <div class="mfooter-block-info-wrapper">
+                {% if block.settings.image != blank %}
+                  <div class="mfooter-block-info-image">
+                    <img src="{{block.settings.image | image_url}}">
+                  </div>
+                {% endif %}
+                <div class="mfooter-block-info-socials">
+                  {% if block.settings.facebook-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_facebook_link}}">
+                        {%if settings.facebook_icon != blank %}
+                          <img src="{{settings.facebook_icon|image_url}}">
+                        {%else%}
+                        {%- render 'icon-facebook' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}
+                  {% if block.settings.instagram-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_instagram_link}}">
+                        {%if settings.instagram_icon != blank%}
+                          <img src="{{settings.instagram|image_url}}">
+                        {%else%}
+                        {%- render 'icon-instagram' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}
+                  {% if block.settings.pinterest-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_pinterest_link}}">
+                        {%if settings.pinterest_icon != blank%}
+                          <img src="{{settings.pinterest_icon|image_url}}">
+                        {%else%}
+                        {%- render 'icon-pinterest' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}{% if block.settings.youtube-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_youtube_link}}">
+                        {% if settings.youtube_icon != blank%}
+                          <img src="{{settings.social_youtube_link|image_url}}">
+                          {%else%}
+                        {%- render 'icon-youtube' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}{% if block.settings.vimeo-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_vimeo_link}}">
+                        {% if settings.vimeo_icon != blank%}
+                          <img src="{{settings.vimeo_icon | image_url}}">
+                          {%else%}
+                        {%- render 'icon-vimeo' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}{% if block.settings.snapchat-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_snapchat_link}}">
+                        {% if settings.snapchat_icon != blank%}
+                          <img src="{{settings.snapchat_icon|image_url}}">
+                          {%else%}
+                        {%- render 'icon-snapchat' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}{% if block.settings.tumblr-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_tumblr_link}}">
+                        {%- render 'icon-tumblr' -%}
+                      </a>
+                    </div>
+                  {%endif%}{% if block.settings.tiktok-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_tiktok_link}}">
+                        {% if settings.tiktok_icon != blank%}
+                          <img src="{{settings.tiktok_icon|image_url}}">
+                          {%else%}
+                        {%- render 'icon-tiktok' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}
+                </div>
+                <div class="mfooter-text">
+                    {% if block.settings.text-1 != blank%}
+                        {{block.settings.text-1}}
+                    {%endif%}
+                </div>
+                <div class="mfooter-text">
+                    {% if block.settings.text-2 != blank%}
+                        {{block.settings.text-2}}
+                    {%endif%}
+                </div>
+                <div class="mfooter-info-button-container">
+                    {% if block.settings.button-text != blank %}
+                    <button class="mfooter-button">
+                        {{block.settings.button-text}}
+                        <img src="{{"mfooter-button-arrow.png" | asset_url}}" class="mfooter-arrow">
+                    </button>
+                    {%endif%}
+                </div>
+              </div>
+            </div>
+            <style>
+                .mfooter-{{block.id}}{
+                    width:{{block.settings.block-width}}%;
+                }
+                .mfooter-{{block.id}} .mfooter-block-info-image{
+                    width:{{block.settings.image-width}}%;
+                    margin: 0 auto;
+                }
+            </style>
+          {% when 'nav-menu' %}
+            {%if block.settings.menu != blank%}
+            {%assign menu = block.settings.menu%}
+                <div class="mfooter-block-menu-container mfooter-{{block.id}}">
+                    <div class="mfooter-block-menu-wrapper">
+                        <div class="mfooter-block-menu-header">
+                            <p>{{menu.title}}</p>
+                            <span class="mfooter-block-header-icon plus">
+                              <svg fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 455 455" xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 455,242.5 "></polygon> </g></svg>
+                            </span>
+                            <span class="mfooter-block-header-icon minus">
+                              <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 83 83" xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M81,36.166H2c-1.104,0-2,0.896-2,2v6.668c0,1.104,0.896,2,2,2h79c1.104,0,2-0.896,2-2v-6.668 C83,37.062,82.104,36.166,81,36.166z"></path> </g> </g></svg>
+                            </span>
+
+                        </div>
+                        {% if menu.links != blank%}
+                            <div class="mfooter-menu-list-container">
+                                <ul class="mfooter-menu-list">
+                                {% for link in menu.links%}
+                                    <li>
+                                        <a href="{{link.url}}">{{link.title}}</a>
+                                    </li>
+                                {%endfor%}
+                                </ul>
+                            </div>
+                        {%endif%}
+                    </div>
+                </div>
+                <style>
+                    .mfooter-{{block.id}}{
+                        width:{{block.settings.block-width}}%;
+                    }
+                </style>
+            {%endif%}
+        {% endcase %}
+      {% endfor %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'information' %}
+            <div class="mfooter-block-info-main mfooter-{{block.id}} mfooter-block-info-main-mob">
+              <div class="mfooter-block-info-wrapper">
+                {% if block.settings.image != blank %}
+                  <div class="mfooter-block-info-image">
+                    <img src="{{block.settings.image | image_url}}">
+                  </div>
+                {% endif %}
+                <div class="mfooter-block-info-socials">
+                  {% if block.settings.facebook-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_facebook_link}}">
+                        {%if settings.facebook_icon != blank %}
+                          <img src="{{settings.facebook_icon|image_url}}">
+                        {%else%}
+                        {%- render 'icon-facebook' -%}
+                        {%endif%}
+                    
+                      </a>
+                    </div>
+                  {%endif%}
+                  {% if block.settings.instagram-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_instagram_link}}">
+                        {%if settings.instagram_icon != blank%}
+                          <img src="{{settings.instagram|image_url}}">
+                        {%else%}
+                        {%- render 'icon-instagram' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}
+                  {% if block.settings.pinterest-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_pinterest_link}}">
+                        {%if settings.pinterest_icon != blank%}
+                          <img src="{{settings.pinterest_icon|image_url}}">
+                        {%else%}
+                        {%- render 'icon-pinterest' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}{% if block.settings.youtube-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_youtube_link}}">
+                        {% if settings.youtube_icon != blank%}
+                          <img src="{{settings.social_youtube_link|image_url}}">
+                          {%else%}
+                        {%- render 'icon-youtube' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}{% if block.settings.vimeo-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_vimeo_link}}">
+                        {% if settings.vimeo_icon != blank%}
+                          <img src="{{settings.vimeo_icon | image_url}}">
+                          {%else%}
+                        {%- render 'icon-vimeo' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}{% if block.settings.snapchat-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_snapchat_link}}">
+                        {% if settings.snapchat_icon != blank%}
+                          <img src="{{settings.snapchat_icon|image_url}}">
+                          {%else%}
+                        {%- render 'icon-snapchat' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}{% if block.settings.tumblr-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_tumblr_link}}">
+                        {%- render 'icon-tumblr' -%}
+                      </a>
+                    </div>
+                  {%endif%}{% if block.settings.tiktok-icon%}
+                    <div class="mfooter-social-icon">
+                      <a href="{{settings.social_tiktok_link}}">
+                        {% if settings.tiktok_icon != blank%}
+                          <img src="{{settings.tiktok_icon|image_url}}">
+                          {%else%}
+                        {%- render 'icon-tiktok' -%}
+                        {%endif%}
+                      </a>
+                    </div>
+                  {%endif%}
+                </div>
+                <div class="mfooter-text">
+                    {% if block.settings.text-1 != blank%}
+                        {{block.settings.text-1}}
+                    {%endif%}
+                </div>
+                <div class="mfooter-text">
+                    {% if block.settings.text-2 != blank%}
+                        {{block.settings.text-2}}
+                    {%endif%}
+                </div>
+              </div>
+            </div>
+        {%endcase%}
+      {%endfor%}
+    </div>
+  </div>
+  <div class="mfooter-bottom-text-main page-width">
+    <div class="mfooter-bottom-text-wrapper">
+      {% for block in section.blocks%}
+        {% case block.type%}
+          {%when 'bottom-text'%}
+          {% if block.settings.text != blank %}
+            <div class="footer-bottom-text">
+              {{block.settings.text}}
+            </div>
+            {%endif%}
+          {%endcase%}
+      {%endfor%}
+    </div>
+  </div>
+</div>
+<style>
+    .mfooter-main{
+    margin-top:{{section.settings.margin-top}}px;
+    margin-bottom:{{section.settings.margin-bottom}}px;
+    padding-top:{{section.settings.padding-top}}px;
+    padding-bottom:{{section.settings.padding-bottom}}px;
+    {% if section.settings.bg-image != blank%}
+        background:url('{{section.settings.bg-image | image_url}}');
+        background-size:cover;
+        background-repeat:no-repeat;
+    {%endif%}
+    position:relative;
+    }
+    .mfooter-overlay{
+        background:{{section.settings.footer-overlay-color}};
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        opacity:{{section.settings.footer-overlay-opacity | divided_by:100.0}};
+    }
+    .mfooter-wrapper{
+        z-index: 0;
+        position: relative;
+    }
+  .mfooter-content-wrapper {
+    display: flex;
+    color:{{section.settings.text-color}};
+    gap: 25px;
+    z-index:1;
+  }
+  .mfooter-block-info-image img{
+    width:100%;
+    }
+    .mfooter-block-info-wrapper{
+     text-align:center;   
+    }
+    .mfooter-block-menu-container{
+      padding-top:65px;
+    }
+    .mfooter-menu-list{
+        list-style: none;
+        padding-inline-start: 0;
+    }
+    .mfooter-menu-list li{
+        margin-bottom:8px;
+    } 
+    .mfooter-block-menu-header{
+        padding: 10px 0;
+        border-bottom:0.1px solid {{section.settings.text-color}};
+    }
+    .mfooter-block-header-icon{
+      display:none;
+    }
+    .mfooter-block-menu-header p{
+        margin:0;
+        
+    }
+    .mfooter-block-menu-wrapper a{
+        text-decoration:none;
+        color:{{section.settings.text-color}};
+        font-size:14px;
+        
+    }
+    .mfooter-text p, .mfooter-button p{
+        margin:0;
+    }
+    .mfooter-text p{
+        font-size:14px;
+    }
+    .mfooter-info-button-container{
+        margin-top:15px;
+    }
+    .mfooter-button{
+        background: white;
+        border: 0;
+        padding: 10px;
+        border-radius: 3px;
+        position: relative;
+        padding-right: 38px;
+
+    }
+    .mfooter-button .mfooter-arrow{
+        position: absolute;
+        right: 10px;
+        width: 13px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .locale-selectors__container{
+        display:none;
+    }
+    .mfooter-block-info-socials{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:15px;
+      margin-top:15px;
+      margin-bottom:15px;
+    }
+    .mfooter-social-icon{
+      width:25px;
+      height:25px;
+    }
+    .mfooter-social-icon img{
+      width:100%;
+    }
+    .mfooter-social-icon svg path{
+      fill:white;
+    }
+    .mfooter-bottom-text-wrapper{
+      padding:15px 0;
+      display:flex;
+      gap:30px;
+      align-items:center;
+      justify-content:center;
+    }
+    .mfooter-bottom-text-main{
+      z-index: 2;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      max-width: 100%;
+      background: #231E20;
+    }
+    .mfooter-bottom-text-main p{
+      margin:0;
+    }
+    .mfooter-bottom-text-main *{
+      color:#919191;
+      font-size:12px;
+      text-decoration:none;
+    }
+    .mfooter-block-info-main-mob{
+      display:none;
+    }
+    
+    @media(max-width:768px){
+      .mfooter-block-info-main-desk :is(.mfooter-block-info-image, .mfooter-block-info-socials, .mfooter-text){
+        display:none;
+      }
+      .mfooter-block-info-main-mob{
+        display:block;
+        margin-top:60px;
+      }
+      .mfooter-content-wrapper{
+        flex-direction:column;
+        gap:0;
+      }
+      .mfooter-block-info-main, .mfooter-block-menu-container{
+        width:100%;
+      }
+      .mfooter-menu-list-container{
+        max-height:0;
+        overflow:hidden;
+        border-bottom: 0.1px solid;
+        transition: max-height .5s;
+      }
+      .mfooter-block-menu-container{
+        padding-top:0;
+      }
+      .mfooter-block-menu-header{
+        padding:20px 0;
+        position:relative;
+        border:0;
+      }
+      .mfooter-bottom-text-wrapper{
+        flex-direction: column;
+        gap: 0px;
+      }
+      .mfooter-main{
+        padding-bottom:130px;
+        padding-top:40px;
+      }
+      .mfooter-block-info-main-desk .mfooter-info-button-container{
+        margin-bottom:30px;
+      }
+      .mfooter-block-header-icon.plus, .mfooter-block-header-icon.minus{
+        display:block;
+        position:absolute;
+        right:0;
+        top:50%;
+        transform:translateY(-50%);
+        height:20px;
+      }
+      .mfooter-block-menu-header.active  .mfooter-block-header-icon.plus{
+      display:none;
+    }
+      .mfooter-block-header-icon svg{
+        fill:white;
+        width:10px;
+      }
+      .mfooter-block-info-image{
+        max-width:170px;
+      }
+      .mfooter-button{
+        width:80%;
+        max-width:400px;
+      }
+</style>
+<script>
+  (function (){
+    const footer_accordion_buttons= document.querySelectorAll('.mfooter-block-menu-header');
+    footer_accordion_buttons.forEach(btn=>{
+      btn.addEventListener('click',e=>{
+        btn.classList.toggle("active");
+        var panel = btn.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      })
+    })
+  })()
+</script>
+{% schema %}
+{
+  "name": "Manduka Footer",
+  "settings": [
+    {
+        "type":"image_picker",
+        "id":"bg-image",
+        "label":"Footer Background Image"
+    },
+    {
+        "type":"color",
+        "id":"text-color",
+        "label":"Text Color",
+        "default":"#ffffff"
+    },
+    {
+        "type":"color",
+        "id":"footer-overlay-color",
+        "label":"Footer Overlay Color",
+        "default":"#000000"
+    },
+    {
+        "type":"range",
+        "id":"footer-overlay-opacity",
+        "label":"Footer Overlay Opacity",
+        "min":0,
+        "max":100,
+        "default":0,
+        "step":1,
+        "unit":"%"
+    },
+    {
+        "type":"range",
+        "id":"margin-top",
+        "label":"Margin Top",
+        "min":0,
+        "max":400,
+        "default":0,
+        "step":4,
+        "unit":"px"
+    },
+    {
+        "type":"range",
+        "id":"margin-bottom",
+        "label":"Margin Bottom",
+        "min":0,
+        "max":400,
+        "default":0,
+        "step":4,
+        "unit":"px"
+    },
+    {
+        "type":"range",
+        "id":"padding-top",
+        "label":"Padding Top",
+        "min":0,
+        "max":400,
+        "default":0,
+        "step":4,
+        "unit":"px"
+    },
+    {
+        "type":"range",
+        "id":"padding-bottom",
+        "label":"Padding Bottom",
+        "min":0,
+        "max":400,
+        "default":0,
+        "step":4,
+        "unit":"px"
+    }
+    ],
+  "blocks": [
+    {
+      "type": "information",
+      "name": "Information",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        },
+        {
+            "type":"range",
+            "id":"image-width",
+            "label":"image Width",
+            "min":0,
+            "max":100,
+            "default":100,
+            "step":1,
+            "unit":"%"
+        },
+        {
+          "type":"checkbox",
+          "id":"facebook-icon",
+          "label":"Show Facebook Icon"
+        },
+        {
+          "type":"checkbox",
+          "id":"instagram-icon",
+          "label":"Show Instagram Icon"
+        },
+        {
+          "type":"checkbox",
+          "id":"pinterest-icon",
+          "label":"Show Pinterest Icon"
+        },
+        {
+          "type":"checkbox",
+          "id":"twitter-icon",
+          "label":"Show Twitter Icon"
+        },
+        {
+          "type":"checkbox",
+          "id":"tiktok-icon",
+          "label":"Show Tiktok Icon"
+        },
+        {
+          "type":"checkbox",
+          "id":"tumblr-icon",
+          "label":"Show Tumblr Icon"
+        },
+        {
+          "type":"checkbox",
+          "id":"snapchat-icon",
+          "label":"Show Snapchat Icon"
+        },
+        {
+          "type":"checkbox",
+          "id":"youtube-icon",
+          "label":"Show Youtube Icon"
+        },
+        {
+          "type":"checkbox",
+          "id":"vimeo-icon",
+          "label":"Show Vimeo Icon"
+        },
+        {
+          "type": "richtext",
+          "id": "text-1",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "text-2",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "button-text",
+          "label": "ButtonText"
+        },
+        {
+            "type":"range",
+            "id":"block-width",
+            "label":"Block Width",
+            "min":0,
+            "max":100,
+            "default":20,
+            "step":1,
+            "unit":"%"
+        }
+      ]
+    },
+    {
+      "type": "nav-menu",
+      "name": "Navigation Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        },
+        {
+            "type":"range",
+            "id":"block-width",
+            "label":"Block Width",
+            "min":0,
+            "max":100,
+            "default":20,
+            "step":1,
+            "unit":"%"
+        }
+      ]
+    },
+    {
+      "type":"bottom-text",
+      "name":"Bottom-text",
+      "settings":[
+        {
+          "type":"richtext",
+          "id":"text",
+          "label":"Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Manduka Footer"
+    }
+  ]
+}
+{% endschema %}
